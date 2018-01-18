@@ -47,7 +47,7 @@ $(function() {
         }
 		
 		self.testVoice = function(data) {
-			self.onDataUpdaterPluginMessage("M117SpeechSynthesis", {'msg':'M117 Pop up message example.','type':'popup'});
+			self.onDataUpdaterPluginMessage("M117SpeechSynthesis", {'msg':'M117 Pop up message example.','type':'speak'});
 		}
 			
 		speechSynthesis.onvoiceschanged = function(e) {
