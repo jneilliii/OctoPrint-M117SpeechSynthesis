@@ -1,8 +1,8 @@
 # OctoPrint-M117SpeechSynthesis
 
-Octoprint plugin to speak aloud M117 gcode messages when the web ui is loaded.
+OctoPrint plugin to speak aloud M117 gcode messages when the web ui is loaded.
 
-Note: this plugin does NOT work with files on the SD card.
+**Note: this plugin does NOT work with files on the SD card. Requires modern day browsers that support Speech Synthesis, check compatibility table [here](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance#Browser_compatibility).**
 
 ![screenshot](settings.png)
 
