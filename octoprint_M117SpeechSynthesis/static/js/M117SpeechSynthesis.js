@@ -9,6 +9,7 @@ $(function() {
 		self.speechVolume = ko.observable();
 		self.speechPitch = ko.observable();
 		self.speechRate = ko.observable();
+		self.speechLanguage = ko.observable();
 		self.voices = ko.observableArray();
 		self.speechEnabledBrowser = ko.observable();
 
@@ -23,6 +24,7 @@ $(function() {
 					msg.volume = self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechVolume();
 					msg.pitch = self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechPitch();
 					msg.rate = self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechRate();
+					msg.lang = self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechLanguage();
 					msg.voice = speechSynthesis.getVoices().filter(function(voice){return voice.name == self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechVoice(); })[0];
 					speechSynthesis.cancel();
 					speechSynthesis.speak(msg);
@@ -36,6 +38,7 @@ $(function() {
 			self.speechVolume(self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechVolume());
 			self.speechPitch(self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechPitch());
 			self.speechRate(self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechRate());
+			self.speechLanguage(self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechLanguage());
         }
 		
 		self.onEventSettingsUpdated = function (payload) {
@@ -44,6 +47,7 @@ $(function() {
 			self.speechVolume(self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechVolume());
 			self.speechPitch(self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechPitch());
 			self.speechRate(self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechRate());
+			self.speechLanguage(self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechLanguage());
         }
 		
 		self.testVoice = function(data) {

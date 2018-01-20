@@ -18,7 +18,7 @@ class M117SpeechSynthesis(octoprint.plugin.AssetPlugin,
 		
 	##-- Settings hooks
 	def get_settings_defaults(self):
-		return dict(enableSpeech=False,speechVoice="",speechVolume=1,speechPitch=1,speechRate=1)	
+		return dict(enableSpeech=False,speechVoice="",speechVolume=1,speechPitch=1,speechRate=1,speechLanguage="en-US")	
 	
 	##-- Template hooks
 	def get_template_configs(self):

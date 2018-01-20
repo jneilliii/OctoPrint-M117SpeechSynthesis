@@ -13,6 +13,12 @@
         </div>
     </div>
 	<div class="control-group" data-bind="visible: settingsViewModel.settings.plugins.M117SpeechSynthesis.enableSpeech">
+		<label class="control-label">{{ _('Language') }}</label>
+		<div class="controls">
+			<input type="text" class="input" data-bind="value: settingsViewModel.settings.plugins.M117SpeechSynthesis.speechLanguage" />
+        </div>
+    </div>
+	<div class="control-group" data-bind="visible: settingsViewModel.settings.plugins.M117SpeechSynthesis.enableSpeech">
 		<label class="control-label">{{ _('Volume') }}</label>
 		<div class="controls">
 			<div class="slider slider-horizontal" style="width: 165px;">
