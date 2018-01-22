@@ -15,8 +15,11 @@ https://github.com/jneilliii/OctoPrint-M117SpeechSynthesis/archive/master.zip
 
 ## Changelog
 
+### [0.2.0] - 2018-01-20
+- Added language code option in settings
+
 ### [0.1.0] - 2018-01-17
 - Initial release.
 
-  
+[0.2.0]: https://github.com/jneilliii/OctoPrint-M117SpeechSynthesis/tree/0.2.0  
 [0.1.0]: https://github.com/jneilliii/OctoPrint-M117SpeechSynthesis/tree/0.1.0
