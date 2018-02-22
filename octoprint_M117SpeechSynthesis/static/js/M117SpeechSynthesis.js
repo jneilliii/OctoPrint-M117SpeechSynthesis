@@ -68,7 +68,7 @@ $(function() {
 				msg.pitch = data.speechPitch();
 				msg.rate = data.speechRate();
 				msg.lang = data.speechLanguage();
-				msg.voice = speechSynthesis.getVoices().filter(function(voice){return voice.name == data.speechVoice(); })[0];
+				msg.voice = speechSynthesis.getVoices()[data.speechVoice()];
 				speechSynthesis.cancel();
 				speechSynthesis.speak(msg);
 			}
