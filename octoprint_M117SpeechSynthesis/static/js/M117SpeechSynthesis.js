@@ -57,10 +57,11 @@ $(function() {
 		}
 			
 		self.onEventSettingsShown = function (payload) {
-				self.loadVoices();
+			console.log(payload);
 		}
 			
 		self.testVoice = function(data) {
+			console.log(data.speechVoice());
 			if(self.enableSpeech() && ('speechSynthesis' in window)){
 				var msg = new SpeechSynthesisUtterance("M117 Speech Synthesis example.");
 				msg.volume = data.speechVolume();
