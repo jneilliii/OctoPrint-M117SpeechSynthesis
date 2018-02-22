@@ -61,17 +61,16 @@ $(function() {
 		}
 			
 		self.testVoice = function(data) {
-			console.log(data);
-			// if(self.enableSpeech() && ('speechSynthesis' in window)){
-				// var msg = new SpeechSynthesisUtterance("M117 Speech Synthesis example.");
-				// msg.volume = self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechVolume();
-				// msg.pitch = self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechPitch();
-				// msg.rate = self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechRate();
-				// msg.lang = self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechLanguage();
-				// msg.voice = speechSynthesis.getVoices().filter(function(voice){return voice.name == self.speechVoice(); })[0];
-				// speechSynthesis.cancel();
-				// speechSynthesis.speak(msg);
-			// }
+			if(self.enableSpeech() && ('speechSynthesis' in window)){
+				var msg = new SpeechSynthesisUtterance("M117 Speech Synthesis example.");
+				msg.volume = data.speechVolume();
+				msg.pitch = data.speechPitch();
+				msg.rate = data.speechRate();
+				msg.lang = data.speechLanguage();
+				msg.voice = speechSynthesis.getVoices().filter(function(voice){return voice.name == data.speechVoice(); })[0];
+				speechSynthesis.cancel();
+				speechSynthesis.speak(msg);
+			}
 		}
 		
 		self.loadVoices = function() {
