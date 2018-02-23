@@ -74,8 +74,7 @@ $(function() {
 		}
 			
 		self.testVoice = function(data) {
-			console.log(data.speechVoice());
-			if(self.enableSpeech() && ('speechSynthesis' in window)){				
+			if(self.settingsViewModel.settings.plugins.M117SpeechSynthesis.enableSpeech() && ('speechSynthesis' in window)){				
 				self.speechSynthesis.volume = data.speechVolume();
 				self.speechSynthesis.pitch = data.speechPitch();
 				self.speechSynthesis.rate = data.speechRate();
