@@ -10,7 +10,7 @@ $(function() {
 		self.speechPitch = ko.observable();
 		self.speechRate = ko.observable();
 		self.speechLanguage = ko.observable();
-		self.voices = ko.observableArray();
+		self.voices = ko.observableArray([{'name':'Select Voice','value':''}]);
 		self.speechEnabledBrowser = ko.observable();
 		
 		if ('speechSynthesis' in window) {
