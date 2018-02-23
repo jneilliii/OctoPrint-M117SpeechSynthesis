@@ -17,7 +17,7 @@ $(function() {
 			// speechSynthesis.onvoiceschanged = function(e) {
 				// self.loadVoices();
 			// };
-			self.speechSynthesis = new SpeechSynthesisUtterance("M117 Speech Synthesis example.");
+			self.speechSynthesis = new SpeechSynthesisUtterance("Test.");
 			self.speechSynthesisVoices = speechSynthesis.getVoices();
 			// Hack around voices bug
 			var interval = setInterval(function () {
@@ -25,7 +25,7 @@ $(function() {
 				if (self.speechSynthesisVoices.length) clearInterval(interval); else return;
 
 				for (var i = 0; i < self.speechSynthesisVoices.length; i++) {
-					self.voices.push({'name':self.speechSynthesisVoices[i].name,'value':self.speechSynthesisVoices[i].name});
+					self.voices.push({'name':self.speechSynthesisVoices[i].name,'value':i});
 				}
 			}, 10);
 		}
