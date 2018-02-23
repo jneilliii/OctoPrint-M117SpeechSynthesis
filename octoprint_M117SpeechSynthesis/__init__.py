@@ -22,7 +22,7 @@ class M117SpeechSynthesis(octoprint.plugin.AssetPlugin,
 	
 	##-- Template hooks
 	def get_template_configs(self):
-		return [dict(type="settings",custom_bindings=True)]
+		return [dict(type="settings",custom_bindings=False)]
 		
 	##~~ Softwareupdate hook
 	def get_version(self):
