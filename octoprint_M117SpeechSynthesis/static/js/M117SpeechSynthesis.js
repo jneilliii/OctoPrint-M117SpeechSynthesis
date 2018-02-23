@@ -73,10 +73,6 @@ $(function() {
 			self.speechLanguage(self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechLanguage());
 		}
 			
-		self.onEventSettingsShown = function (payload) {
-			console.log(payload);
-		}
-			
 		self.testVoice = function(data) {
 			console.log(data.speechVoice());
 			if(self.enableSpeech() && ('speechSynthesis' in window)){				
