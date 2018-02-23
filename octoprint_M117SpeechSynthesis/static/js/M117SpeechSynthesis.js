@@ -77,7 +77,7 @@ $(function() {
 			if(self.settingsViewModel.settings.plugins.M117SpeechSynthesis.enableSpeech() && ('speechSynthesis' in window)){
 				self.onDataUpdaterPluginMessage("M117SpeechSynthesis", {'msg':'M117 Speech Synthesis example.','type':'speak'});
 			}
-		}
+		} 
 		
 /* 		self.loadVoices = function() {
 			if (self.voices().length > 0)
