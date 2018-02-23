@@ -17,7 +17,7 @@ $(function() {
 			// speechSynthesis.onvoiceschanged = function(e) {
 				// self.loadVoices();
 			// };
-			self.speechSynthesis = new SpeechSynthesisUtterance("M117 Speech Synthesis.");
+			self.speechSynthesis = new SpeechSynthesisUtterance("M117 Speech Synthesis example.");
 			self.speechSynthesisVoices = speechSynthesis.getVoices();
 			// Hack around voices bug
 			var interval = setInterval(function () {
@@ -75,7 +75,13 @@ $(function() {
 			
 		self.testVoice = function(data) {
 			if(self.settingsViewModel.settings.plugins.M117SpeechSynthesis.enableSpeech() && ('speechSynthesis' in window)){
-				self.onDataUpdaterPluginMessage("M117SpeechSynthesis", {'msg':'M117 Speech Synthesis example.','type':'speak'});
+				self.speechSynthesis.volume = self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechVolume();
+				self.speechSynthesis.pitch = self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechPitch();
+				self.speechSynthesis.rate = self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechRate();
+				self.speechSynthesis.lang = self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechLanguage();
+				self.speechSynthesis.voice = self.speechSynthesisVoices[self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechVoice()];				
+				speechSynthesis.cancel();
+				speechSynthesis.speak(self.speechSynthesis);
 			}
 		}
 		
