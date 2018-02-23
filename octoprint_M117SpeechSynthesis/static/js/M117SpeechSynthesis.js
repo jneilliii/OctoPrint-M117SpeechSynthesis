@@ -12,6 +12,23 @@ $(function() {
 		self.speechLanguage = ko.observable();
 		self.voices = ko.observableArray();
 		self.speechEnabledBrowser = ko.observable();
+		
+		if ('speechSynthesis' in window) {
+			// speechSynthesis.onvoiceschanged = function(e) {
+				// self.loadVoices();
+			// };
+			self.speechSynthesis = new SpeechSynthesisUtterance("M117 Speech Synthesis example.");
+			self.speechSynthesisVoices = speechSynthesis.getVoices();
+			// Hack around voices bug
+			var interval = setInterval(function () {
+				self.speechSynthesisVoices = speechSynthesis.getVoices();
+				if (self.speechSynthesisVoices.length) clearInterval(interval); else return;
+
+				for (var i = 0; i < self.speechSynthesisVoices.length; i++) {
+					self.voices.push({'name':self.speechSynthesisVoices[i].name,'value':self.speechSynthesisVoices[i].name});
+				}
+			}, 10);
+		}
 
 		self.onDataUpdaterPluginMessage = function(plugin, data) {
 			if (plugin != "M117SpeechSynthesis") {
@@ -41,7 +58,7 @@ $(function() {
 			self.speechLanguage(self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechLanguage());
 			if('speechSynthesis' in window) {
 				self.speechEnabledBrowser(true);
-				self.loadVoices();
+				// self.loadVoices();
 			} else { 
 				self.speechEnabledBrowser(false);
 			}
@@ -62,32 +79,25 @@ $(function() {
 			
 		self.testVoice = function(data) {
 			console.log(data.speechVoice());
-			if(self.enableSpeech() && ('speechSynthesis' in window)){
-				var msg = new SpeechSynthesisUtterance("M117 Speech Synthesis example.");
-				msg.volume = data.speechVolume();
-				msg.pitch = data.speechPitch();
-				msg.rate = data.speechRate();
-				msg.lang = data.speechLanguage();
-				msg.voice = speechSynthesis.getVoices()[data.speechVoice()];
+			if(self.enableSpeech() && ('speechSynthesis' in window)){				
+				self.speechSynthesis.volume = data.speechVolume();
+				self.speechSynthesis.pitch = data.speechPitch();
+				self.speechSynthesis.rate = data.speechRate();
+				self.speechSynthesis.lang = data.speechLanguage();
+				self.speechSynthesis.voice = self.speechSynthesisVoices[data.speechVoice()];
 				speechSynthesis.cancel();
-				speechSynthesis.speak(msg);
+				speechSynthesis.speak(self.speechSynthesis);
 			}
 		}
 		
-		self.loadVoices = function() {
+/* 		self.loadVoices = function() {
 			if (self.voices().length > 0)
 				return;
 			var voicenames = speechSynthesis.getVoices();
 			voicenames.forEach(function(voice, i) {
 				self.voices.push({'name':voice.name,'value':voice.name})
 				});
-			}
-				
-		if ('speechSynthesis' in window) {
-			speechSynthesis.onvoiceschanged = function(e) {
-				self.loadVoices();
-			};
-		}
+			} */
     }
 
     // This is how our plugin registers itself with the application, by adding some configuration
