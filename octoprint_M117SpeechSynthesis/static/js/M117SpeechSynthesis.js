@@ -75,12 +75,12 @@ $(function() {
 			
 		self.testVoice = function(data) {
 			if(self.settingsViewModel.settings.plugins.M117SpeechSynthesis.enableSpeech() && ('speechSynthesis' in window)){				
+				speechSynthesis.cancel();
 				self.speechSynthesis.volume = self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechVolume();
 				self.speechSynthesis.pitch = self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechPitch();
 				self.speechSynthesis.rate = self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechRate();
 				self.speechSynthesis.lang = self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechLanguage();
 				self.speechSynthesis.voice = self.speechSynthesisVoices[self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechVoice()];
-				speechSynthesis.cancel();
 				speechSynthesis.speak(self.speechSynthesis);
 			}
 		}
