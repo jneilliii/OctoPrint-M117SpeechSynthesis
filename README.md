@@ -15,15 +15,19 @@ https://github.com/jneilliii/OctoPrint-M117SpeechSynthesis/archive/master.zip
 
 ## Changelog
 
+### [0.4.0] - 2018-02-23
+- Fixed binding related issues that required saving the settings prior to using the test button.  Now works without saving first.
+
 ### [0.3.0] - 2018-01-22
-- UI tweaks and additional browser checks
+- UI tweaks and additional browser checks.
 
 ### [0.2.0] - 2018-01-20
-- Added language code option in settings
+- Added language code option in settings.
 
 ### [0.1.0] - 2018-01-17
 - Initial release.
 
+[0.4.0]: https://github.com/jneilliii/OctoPrint-M117SpeechSynthesis/tree/0.4.0
 [0.3.0]: https://github.com/jneilliii/OctoPrint-M117SpeechSynthesis/tree/0.3.0
 [0.2.0]: https://github.com/jneilliii/OctoPrint-M117SpeechSynthesis/tree/0.2.0
 [0.1.0]: https://github.com/jneilliii/OctoPrint-M117SpeechSynthesis/tree/0.1.0

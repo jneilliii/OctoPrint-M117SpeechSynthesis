@@ -78,7 +78,7 @@
 		</div>
 		<div class="control-group">
 			<div class="controls">
-				<button class="btn btn-primary" data-bind="click: testVoice,enable: speechVoice().length > 0,attr: {'title':((speechVoice().length) > 0 ? '' : 'You must save once first before testing is possible.')}">Test</button>
+				<button class="btn btn-primary" data-bind="click: testVoice,enable: settingsViewModel.settings.plugins.M117SpeechSynthesis.speechVoice() !== ''">Test</button>
 			</div>
 		</div>
 	</div>
