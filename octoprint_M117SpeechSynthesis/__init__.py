@@ -8,7 +8,11 @@ class M117SpeechSynthesis(octoprint.plugin.AssetPlugin,
                 octoprint.plugin.SettingsPlugin):
 				
 	def AlertM117(self, comm_instance, phase, cmd, cmd_type, gcode, *args, **kwargs):
-		if gcode and cmd.startswith("M117"):
+		if gcode and cmd.startswith("M117") and not self._settings.get(["useCustomGCODE"]):
+			self._plugin_manager.send_plugin_message(self._identifier, dict(type="speak", msg=re.sub(r'^M117\s?', '', cmd)))
+			return
+			
+		if cmd.startswith("@SPEAK") and self._settings.get(["useCustomGCODE"]):
 			self._plugin_manager.send_plugin_message(self._identifier, dict(type="speak", msg=re.sub(r'^M117\s?', '', cmd)))
 			return
 	
@@ -18,7 +22,7 @@ class M117SpeechSynthesis(octoprint.plugin.AssetPlugin,
 		
 	##-- Settings hooks
 	def get_settings_defaults(self):
-		return dict(enableSpeech=False,speechVoice="",speechVolume=1,speechPitch=1,speechRate=1,speechLanguage="en-US")	
+		return dict(enableSpeech=False,speechVoice="",speechVolume=1,speechPitch=1,speechRate=1,speechLanguage="en-US",useCustomGCODE=False)	
 	
 	##-- Template hooks
 	def get_template_configs(self):

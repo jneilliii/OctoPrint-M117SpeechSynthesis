@@ -12,6 +12,7 @@ $(function() {
 		self.speechLanguage = ko.observable();
 		self.voices = ko.observableArray([{'name':'Select Voice','value':''}]);
 		self.speechEnabledBrowser = ko.observable();
+		self.useCustomGCODE = ko observable();
 		
 		if ('speechSynthesis' in window) {
 			// speechSynthesis.onvoiceschanged = function(e) {
@@ -56,6 +57,7 @@ $(function() {
 			self.speechPitch(self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechPitch());
 			self.speechRate(self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechRate());
 			self.speechLanguage(self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechLanguage());
+			self.useCustomGCODE(self.settingsViewModel.settings.plugins.M117SpeechSynthesis.useCustomGCODE());
 			if('speechSynthesis' in window) {
 				self.speechEnabledBrowser(true);
 				// self.loadVoices();
@@ -71,6 +73,7 @@ $(function() {
 			self.speechPitch(self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechPitch());
 			self.speechRate(self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechRate());
 			self.speechLanguage(self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechLanguage());
+			self.useCustomGCODE(self.settingsViewModel.settings.plugins.M117SpeechSynthesis.useCustomGCODE());
 		}
 			
 		self.testVoice = function(data) {
