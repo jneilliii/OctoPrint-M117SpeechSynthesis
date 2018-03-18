@@ -13,7 +13,7 @@ class M117SpeechSynthesis(octoprint.plugin.AssetPlugin,
 			return
 			
 		if cmd.startswith("@SPEAK") and self._settings.get(["useCustomGCODE"]):
-			self._plugin_manager.send_plugin_message(self._identifier, dict(type="speak", msg=re.sub(r'^M117\s?', '', cmd)))
+			self._plugin_manager.send_plugin_message(self._identifier, dict(type="speak", msg=re.sub(r'^@SPEAK\s?', '', cmd)))
 			return
 	
 	##-- AssetPlugin hooks
