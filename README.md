@@ -15,6 +15,9 @@ https://github.com/jneilliii/OctoPrint-M117SpeechSynthesis/archive/master.zip
 
 ## Changelog
 
+### [0.5.0] - 2018-03-18
+- Added option for using custom GCODE commands.  When enabled in settings processing of regular M117 messages will stop working. Use the command @SPEAK as replacement to M117.
+
 ### [0.4.0] - 2018-02-23
 - Fixed binding related issues that required saving the settings prior to using the test button.  Now works without saving first.
 
@@ -27,6 +30,7 @@ https://github.com/jneilliii/OctoPrint-M117SpeechSynthesis/archive/master.zip
 ### [0.1.0] - 2018-01-17
 - Initial release.
 
+[0.5.0]: https://github.com/jneilliii/OctoPrint-M117SpeechSynthesis/tree/0.5.0
 [0.4.0]: https://github.com/jneilliii/OctoPrint-M117SpeechSynthesis/tree/0.4.0
 [0.3.0]: https://github.com/jneilliii/OctoPrint-M117SpeechSynthesis/tree/0.3.0
 [0.2.0]: https://github.com/jneilliii/OctoPrint-M117SpeechSynthesis/tree/0.2.0
