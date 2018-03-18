@@ -12,7 +12,7 @@ $(function() {
 		self.speechLanguage = ko.observable();
 		self.voices = ko.observableArray([{'name':'Select Voice','value':''}]);
 		self.speechEnabledBrowser = ko.observable();
-		self.useCustomGCODE = ko observable();
+		self.useCustomGCODE = ko.observable();
 		
 		if ('speechSynthesis' in window) {
 			// speechSynthesis.onvoiceschanged = function(e) {
