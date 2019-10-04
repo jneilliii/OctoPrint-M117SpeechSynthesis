@@ -15,6 +15,9 @@ https://github.com/jneilliii/OctoPrint-M117SpeechSynthesis/archive/master.zip
 
 ## Changelog
 
+### [0.5.1] - 2019-10-03
+- Added Python 3 compatibility.
+
 ### [0.5.0] - 2018-03-18
 - Added option for using custom GCODE commands.  When enabled in settings processing of regular M117 messages will stop working. Use the command @SPEAK as replacement to M117.
 
