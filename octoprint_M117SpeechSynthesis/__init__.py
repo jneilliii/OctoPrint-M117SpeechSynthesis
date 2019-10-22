@@ -50,6 +50,7 @@ class M117SpeechSynthesis(octoprint.plugin.AssetPlugin,
 		)
 
 __plugin_name__ = "M117 Speech Synthesis"
+__plugin_pythoncompat__ = ">=2.7,<4"
 
 def __plugin_load__():
 	global __plugin_implementation__
