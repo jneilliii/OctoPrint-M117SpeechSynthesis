@@ -14,23 +14,6 @@ $(function() {
 		self.speechEnabledBrowser = ko.observable();
 		self.useCustomGCODE = ko.observable();
 
-		if ('speechSynthesis' in window) {
-			// speechSynthesis.onvoiceschanged = function(e) {
-				// self.loadVoices();
-			// };
-			self.speechSynthesis = new SpeechSynthesisUtterance("M117 Speech Synthesis example.");
-			self.speechSynthesisVoices = speechSynthesis.getVoices();
-			// Hack around voices bug
-			var interval = setInterval(function () {
-				self.speechSynthesisVoices = speechSynthesis.getVoices();
-				if (self.speechSynthesisVoices.length) clearInterval(interval); else return;
-
-				for (var i = 0; i < self.speechSynthesisVoices.length; i++) {
-					self.voices.push({'name':self.speechSynthesisVoices[i].name,'value':i});
-				}
-			}, 10);
-		}
-
 		self.onDataUpdaterPluginMessage = function(plugin, data) {
 			if (plugin != "M117SpeechSynthesis") {
 				return;
@@ -43,7 +26,7 @@ $(function() {
 					self.speechSynthesis.pitch = self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechPitch();
 					self.speechSynthesis.rate = self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechRate();
 					self.speechSynthesis.lang = self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechLanguage();
-					self.speechSynthesis.voice = self.speechSynthesisVoices[speechVoice()];
+					self.speechSynthesis.voice = self.speechSynthesisVoices[speechVoice()-1];
 					speechSynthesis.cancel();
 					speechSynthesis.speak(self.speechSynthesis);
 				}
@@ -51,6 +34,19 @@ $(function() {
 		}
 
 		self.onBeforeBinding = function() {
+			if ('speechSynthesis' in window) {
+				self.speechSynthesis = new SpeechSynthesisUtterance("M117 Speech Synthesis example.");
+				self.speechSynthesisVoices = speechSynthesis.getVoices();
+				// Hack around voices bug
+				var interval = setInterval(function () {
+					self.speechSynthesisVoices = speechSynthesis.getVoices();
+					if (self.speechSynthesisVoices.length) clearInterval(interval); else return;
+
+					for (var i = 0; i < self.speechSynthesisVoices.length; i++) {
+						self.voices.push({'name':self.speechSynthesisVoices[i].name,'value':i+1});
+					}
+				}, 10);
+			}
 			self.enableSpeech(self.settingsViewModel.settings.plugins.M117SpeechSynthesis.enableSpeech());
 			self.speechVoice(self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechVoice());
 			self.speechVolume(self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechVolume());

@@ -6,32 +6,42 @@ import re
 class M117SpeechSynthesis(octoprint.plugin.AssetPlugin,
 				octoprint.plugin.TemplatePlugin,
                 octoprint.plugin.SettingsPlugin):
-				
+
 	def AlertM117(self, comm_instance, phase, cmd, cmd_type, gcode, *args, **kwargs):
 		if gcode and cmd.startswith("M117") and not self._settings.get(["useCustomGCODE"]):
 			self._plugin_manager.send_plugin_message(self._identifier, dict(type="speak", msg=re.sub(r'^M117\s?', '', cmd)))
 			return
-			
+
 		if cmd.startswith("@SPEAK") and self._settings.get(["useCustomGCODE"]):
 			self._plugin_manager.send_plugin_message(self._identifier, dict(type="speak", msg=re.sub(r'^@SPEAK\s?', '', cmd)))
 			return
-	
+
 	##-- AssetPlugin hooks
 	def get_assets(self):
 		return dict(js=["js/M117SpeechSynthesis.js"])
-		
+
 	##-- Settings hooks
 	def get_settings_defaults(self):
-		return dict(enableSpeech=False,speechVoice="",speechVolume=1,speechPitch=1,speechRate=1,speechLanguage="en-US",useCustomGCODE=False)	
-	
+		return dict(enableSpeech=False,speechVoice="",speechVolume=1,speechPitch=1,speechRate=1,speechLanguage="en-US",useCustomGCODE=False)
+
+	def get_settings_version(self):
+		return 1
+
+	def on_settings_migrate(self, target, current=None):
+		if current is None or current < 1:
+			# increment pre-existing selected voice
+			voice = self._settings.get_int(["speechVoice"])
+			if voice:
+				self._settings.set_int(["speechVoice"], voice + 1)
+
 	##-- Template hooks
 	def get_template_configs(self):
 		return [dict(type="settings",custom_bindings=True)]
-		
+
 	##~~ Softwareupdate hook
 	def get_version(self):
 		return self._plugin_version
-		
+
 	def get_update_information(self):
 		return dict(
 			m117popup=dict(
