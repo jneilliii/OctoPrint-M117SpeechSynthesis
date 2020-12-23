@@ -10,7 +10,7 @@ $(function() {
 		self.speechPitch = ko.observable();
 		self.speechRate = ko.observable();
 		self.speechLanguage = ko.observable();
-		self.voices = ko.observableArray([{'name':'Select Voice','value':''}]);
+		self.voices = ko.observableArray([]);
 		self.speechEnabledBrowser = ko.observable();
 		self.useCustomGCODE = ko.observable();
 
@@ -20,13 +20,13 @@ $(function() {
 			}
 
 			if(data.type == "speak") {
-				if(self.enableSpeech() && ('speechSynthesis' in window) && (speechVoice() !== '')){
+				if(self.enableSpeech() && ('speechSynthesis' in window) && (self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechVoice() !== '')){
 					self.speechSynthesis.text = data.msg;
 					self.speechSynthesis.volume = self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechVolume();
 					self.speechSynthesis.pitch = self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechPitch();
 					self.speechSynthesis.rate = self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechRate();
 					self.speechSynthesis.lang = self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechLanguage();
-					self.speechSynthesis.voice = self.speechSynthesisVoices[speechVoice()-1];
+					self.speechSynthesis.voice = self.speechSynthesisVoices[self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechVoice()];
 					speechSynthesis.cancel();
 					speechSynthesis.speak(self.speechSynthesis);
 				}
@@ -43,12 +43,11 @@ $(function() {
 					if (self.speechSynthesisVoices.length) clearInterval(interval); else return;
 
 					for (var i = 0; i < self.speechSynthesisVoices.length; i++) {
-						self.voices.push({'name':self.speechSynthesisVoices[i].name,'value':i+1});
+						self.voices.push({'name':self.speechSynthesisVoices[i].name,'value':i});
 					}
 				}, 10);
 			}
 			self.enableSpeech(self.settingsViewModel.settings.plugins.M117SpeechSynthesis.enableSpeech());
-			self.speechVoice(self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechVoice());
 			self.speechVolume(self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechVolume());
 			self.speechPitch(self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechPitch());
 			self.speechRate(self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechRate());
@@ -60,10 +59,6 @@ $(function() {
 			} else { 
 				self.speechEnabledBrowser(false);
 			}
-		}
-
-		self.onSettingsBeforeSave = function() {
-			self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechVoice(self.speechVoice());
 		}
 
 		self.onEventSettingsUpdated = function (payload) {

@@ -24,16 +24,6 @@ class M117SpeechSynthesis(octoprint.plugin.AssetPlugin,
 	def get_settings_defaults(self):
 		return dict(enableSpeech=False,speechVoice="",speechVolume=1,speechPitch=1,speechRate=1,speechLanguage="en-US",useCustomGCODE=False)
 
-	def get_settings_version(self):
-		return 1
-
-	def on_settings_migrate(self, target, current=None):
-		if current is None or current < 1:
-			# increment pre-existing selected voice
-			voice = self._settings.get_int(["speechVoice"])
-			if voice:
-				self._settings.set_int(["speechVoice"], voice + 1)
-
 	##-- Template hooks
 	def get_template_configs(self):
 		return [dict(type="settings",custom_bindings=True)]
