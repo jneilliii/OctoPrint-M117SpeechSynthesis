@@ -13,25 +13,13 @@ Install via the bundled Plugin Manager or manually using this URL:
 
 https://github.com/jneilliii/OctoPrint-M117SpeechSynthesis/archive/master.zip
 
-## Changelog
+## Most recent changelog
 
-### [0.5.1] - 2019-10-03
-- Added Python 3 compatibility.
+### [0.5.2] - 2020-12-24
 
-### [0.5.0] - 2018-03-18
-- Added option for using custom GCODE commands.  When enabled in settings processing of regular M117 messages will stop working. Use the command @SPEAK as replacement to M117.
+- Fix issues related to selecting the first voice in the list not saving.
 
-### [0.4.0] - 2018-02-23
-- Fixed binding related issues that required saving the settings prior to using the test button.  Now works without saving first.
-
-### [0.3.0] - 2018-01-22
-- UI tweaks and additional browser checks.
-
-### [0.2.0] - 2018-01-20
-- Added language code option in settings.
-
-### [0.1.0] - 2018-01-17
-- Initial release.
+## [All releases](https://github.com/jneilliii/OctoPrint-M117SpeechSynthesis/releases)
 
 ## Get Help
 
