@@ -15,9 +15,9 @@ https://github.com/jneilliii/OctoPrint-M117SpeechSynthesis/archive/master.zip
 
 ## Most recent changelog
 
-### [0.5.2] - 2020-12-24
+### [0.5.3] - 2021-04-16
 
-- Fix issues related to selecting the first voice in the list not saving.
+- Fix issue introduced in last version that would revert to the first voice in the list.
 
 ## [All releases](https://github.com/jneilliii/OctoPrint-M117SpeechSynthesis/releases)
 
@@ -32,15 +32,20 @@ Check out my other plugins [here](https://plugins.octoprint.org/by_author/#jneil
 ### Sponsors
 - Andreas Lindermayr
 - [@Mearman](https://github.com/Mearman)
-- [@TxBillbr](https://github.com/TxBillbr)
-- Gerald Dachs
 - [@TheTuxKeeper](https://github.com/thetuxkeeper)
-- @tideline3d
+- [@tideline3d](https://github.com/tideline3d/)
 - [SimplyPrint](https://simplyprint.dk/)
 - [Andrew Beeman](https://github.com/Kiendeleo)
 - [Calanish](https://github.com/calanish)
+- [Will O](https://github.com/4wrxb)
+- [Lachlan Bell](https://lachy.io/)
+- [Johnny Bergdal](https://github.com/bergdahl)
+- [Leigh Johnson](https://github.com/leigh-johnson)
+- [Stephen Berry](https://github.com/berrystephenw)
+- [Guyot François](https://github.com/iFrostizz)
+- César Romero
 
-### Support My Efforts
+## Support My Efforts
 I, jneilliii, programmed this plugin for fun and do my best effort to support those that have issues with it, please return the favor and leave me a tip or become a Patron if you find this plugin helpful and want me to continue future development.
 
 [![Patreon](patreon-with-text-new.png)](https://www.patreon.com/jneilliii) [![paypal](paypal-with-text.png)](https://paypal.me/jneilliii)
