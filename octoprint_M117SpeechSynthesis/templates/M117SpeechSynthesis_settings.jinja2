@@ -93,5 +93,41 @@
 				<input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.M117SpeechSynthesis.usePiSpeaker">
 			</div>
 		</div>
+		<div class="control-group">
+			<label class="control-label">{{ _('Volume') }}</label>
+			<div class="controls">
+				<div class="slider slider-horizontal" style="width: 165px;">
+					<div class="slider-track">
+						<div class="slider-selection" style="left: 0%; width: 50%;"></div>
+						<div class="slider-handle round" style="left: 50%;"></div>
+						<div class="slider-handle round hide" style="left: 0%;"></div>
+					</div>
+					<div class="tooltip top hide" style="top: -24px; left: -5px;">
+						<div class="tooltip-arrow"></div>
+						<div class="tooltip-inner">100</div>
+					</div>
+					<input type="number" style="width: 153px; display: none;" data-bind="slider: {min: 0, max: 1, step: .01, value: settingsViewModel.settings.plugins.M117SpeechSynthesis.speechVolumeLocal, tooltip: 'hide'}">
+				</div>
+				<div data-bind="text: settingsViewModel.settings.plugins.M117SpeechSynthesis.speechVolumeLocal" style="display:inline;padding-left:20px;"></div>
+			</div>
+		</div>
+		<div class="control-group" data-bind="visible: settingsViewModel.settings.plugins.M117SpeechSynthesis.usePiSpeaker">
+			<label class="control-label">{{ _('Rate') }}</label>
+			<div class="controls">
+				<div class="slider slider-horizontal" style="width: 165px;">
+					<div class="slider-track">
+						<div class="slider-selection" style="left: 0%; width: 50%;"></div>
+						<div class="slider-handle round" style="left: 50%;"></div>
+						<div class="slider-handle round hide" style="left: 0%;"></div>
+					</div>
+					<div class="tooltip top hide" style="top: -24px; left: -5px;">
+						<div class="tooltip-arrow"></div>
+						<div class="tooltip-inner">100</div>
+					</div>
+					<input type="number" style="width: 153px; display: none;" data-bind="slider: {min: 50, max: 300, step: 1, value: settingsViewModel.settings.plugins.M117SpeechSynthesis.speechRateLocal, tooltip: 'hide'}">
+				</div>
+				<div data-bind="text: settingsViewModel.settings.plugins.M117SpeechSynthesis.speechRateLocal" style="display:inline;padding-left:20px;"></div>
+			</div>
+		</div>
 	</div>
 </form>

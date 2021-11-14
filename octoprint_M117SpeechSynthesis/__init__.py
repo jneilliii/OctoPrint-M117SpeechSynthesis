@@ -20,6 +20,8 @@ class M117SpeechSynthesis(octoprint.plugin.AssetPlugin,
         if message:
             if self._settings.get_boolean(["usePiSpeaker"]):
                 engine = pyttsx3.init()
+                engine.setProperty("volume", float(self._settings.get(["speechVolumeLocal"])))
+                engine.setProperty("rate", float(self._settings.get(["speechRateLocal"])))
                 engine.say(message["msg"])
                 engine.runAndWait()
             else:
@@ -32,7 +34,8 @@ class M117SpeechSynthesis(octoprint.plugin.AssetPlugin,
     ##-- Settings hooks
     def get_settings_defaults(self):
         return dict(enableSpeech=False, speechVoice="", speechVolume=1, speechPitch=1, speechRate=1,
-                    speechLanguage="en-US", useCustomGCODE=False, usePiSpeaker=False)
+                    speechLanguage="en-US", useCustomGCODE=False, usePiSpeaker=False, speechVolumeLocal=0.75,
+                    speechRateLocal=175)
 
     ##-- Template hooks
     def get_template_configs(self):
