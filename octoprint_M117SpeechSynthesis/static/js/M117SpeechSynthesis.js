@@ -48,7 +48,6 @@ $(function() {
 				}, 10);
 			}
 			self.enableSpeech(self.settingsViewModel.settings.plugins.M117SpeechSynthesis.enableSpeech());
-			self.speechVoice(self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechVoice());
 			self.speechVolume(self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechVolume());
 			self.speechPitch(self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechPitch());
 			self.speechRate(self.settingsViewModel.settings.plugins.M117SpeechSynthesis.speechRate());
